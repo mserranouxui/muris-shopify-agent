@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Muris Woman — Camina libre</title>
+<meta name="description" content="Zapatillas barefoot, veganas y de origen vegetal para mujeres que no renuncian a la naturalidad de su paso.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,400;0,500;0,600;1,500;1,600&family=Archivo:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper: #EFE6D8;
+    --ink: #241922;
+    --ink-soft: #5b5058;
+    --aubergine: #5B2A45;
+    --aubergine-deep: #401E32;
+    --stone: #C9B79E;
+    --bone: #FBF7EF;
+    --line: rgba(36,25,34,0.14);
+  }
+  *{ box-sizing: border-box; margin:0; padding:0; }
+  html{ scroll-behavior: smooth; }
+  body{
+    background: var(--paper);
+    color: var(--ink);
+    font-family: 'Archivo', sans-serif;
+    font-weight: 400;
+    line-height: 1.55;
+    -webkit-font-smoothing: antialiased;
+  }
+  img{ max-width:100%; display:block; }
+  a{ color: inherit; }
+  .wrap{
+    max-width: 1180px;
+    margin: 0 auto;
+    padding: 0 28px;
+  }
+  h1, h2, h3, .display{
+    font-family: 'Fraunces', serif;
+    font-weight: 500;
+    line-height: 1.06;
+    letter-spacing: -0.01em;
+  }
+  em{ font-style: italic; }
+  a:focus-visible, button:focus-visible, input:focus-visible{
+    outline: 2px solid var(--aubergine);
+    outline-offset: 3px;
+  }
+
+  .btn{
+    display: inline-block;
+    background: var(--aubergine);
+    color: var(--bone);
+    text-decoration: none;
+    padding: 15px 28px;
+    font-size: 0.95rem;
+    font-weight: 600;
+    font-family: 'Archivo', sans-serif;
+    border: 1px solid var(--aubergine);
+    cursor: pointer;
+    transition: background 0.2s ease, color 0.2s ease;
+  }
+  .btn:hover{ background: var(--aubergine-deep); border-color: var(--aubergine-deep); }
+  .btn-inverse{
+    background: var(--bone);
+    color: var(--aubergine);
+    border-color: var(--bone);
+  }
+  .btn-inverse:hover{ background: transparent; color: var(--bone); }
+
+  .textlink{
+    text-decoration: none;
+    color: var(--ink);
+    font-weight: 600;
+    font-size: 0.92rem;
+    border-bottom: 1px solid transparent;
+    transition: border-color 0.2s ease;
+    padding-bottom: 2px;
+  }
+  .textlink:hover{ border-color: currentColor; }
+
+  /* ---------- NAV ---------- */
+  header{
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    background: var(--paper);
+    border-bottom: 1px solid var(--line);
+  }
+  nav{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 0;
+  }
+  .logo{
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-size: 1.4rem;
+    text-decoration: none;
+    color: var(--ink);
+  }
+
+  /* ---------- HERO ---------- */
+  .hero{
+    display: grid;
+    grid-template-columns: 0.88fr 1fr;
+    align-items: stretch;
+  }
+  .hero-copy{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 64px 28px 64px clamp(28px, 5vw, 64px);
+    overflow: hidden;
+  }
+  .hero-copy::before{
+    content: "";
+    position: absolute;
+    left: -60px;
+    bottom: -90px;
+    width: 380px;
+    height: 190px;
+    background: var(--stone);
+    opacity: 0.45;
+    border-radius: 100% 100% 0 0 / 100% 100% 0 0;
+    z-index: 0;
+  }
+  .hero-copy > *{ position: relative; z-index: 1; }
+  .hero h1{
+    font-size: clamp(2.5rem, 4.4vw, 4.1rem);
+    max-width: 12ch;
+    margin-bottom: 22px;
+  }
+  .hero p{
+    font-size: 1.08rem;
+    color: var(--ink-soft);
+    max-width: 42ch;
+    margin-bottom: 30px;
+  }
+  .hero-cta-row{ display:flex; align-items:center; gap:20px; flex-wrap: wrap; }
+  .fine-print{ font-size: 0.82rem; color: var(--ink-soft); }
+
+  .hero-visual{
+    min-height: 460px;
+    overflow: hidden;
+    background: var(--stone);
+  }
+  .hero-visual img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center 20%;
+  }
+
+  /* ---------- PULL STAT ---------- */
+  .pull-stat{
+    border-top: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+    padding: 40px 0;
+  }
+  .pull-stat .wrap{
+    display: flex;
+    align-items: baseline;
+    gap: 28px;
+    flex-wrap: wrap;
+  }
+  .pull-stat .num{
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-weight: 500;
+    font-size: clamp(3.2rem, 7vw, 5.2rem);
+    color: var(--aubergine);
+    line-height: 1;
+  }
+  .pull-stat p{
+    max-width: 42ch;
+    font-size: 1.05rem;
+    color: var(--ink-soft);
+  }
+
+  /* ---------- SECTION RHYTHM ---------- */
+  .section{ padding: 96px 0; }
+  .section-alt{ background: var(--bone); }
+  .section-head{
+    max-width: 640px;
+    margin-bottom: 56px;
+  }
+  .section-head h2{
+    font-size: clamp(2rem, 3.4vw, 2.8rem);
+  }
+  .section-head p{
+    color: var(--ink-soft);
+    margin-top: 16px;
+    font-size: 1.02rem;
+    max-width: 52ch;
+  }
+
+  /* ---------- BENEFITS ---------- */
+  .benefits{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 56px;
+  }
+  .benefit h3{
+    font-style: italic;
+    font-size: 1.4rem;
+    margin-bottom: 12px;
+    color: var(--aubergine);
+  }
+  .benefit p{ color: var(--ink-soft); font-size: 0.98rem; }
+
+  /* ---------- MOSAIC ---------- */
+  .mosaic{
+    display: grid;
+    grid-template-columns: 1.3fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    gap: 24px;
+    height: 640px;
+  }
+  .mosaic figure{ position: relative; height: 100%; overflow: hidden; margin:0; }
+  .mosaic .m-big{ grid-row: 1 / 3; }
+  .mosaic img{ width:100%; height:100%; object-fit: cover; }
+  .mosaic figcaption{
+    position: absolute;
+    left: 0; right: 0; bottom: 0;
+    padding: 18px 20px;
+    background: linear-gradient(to top, rgba(36,25,34,0.72), rgba(36,25,34,0));
+    color: var(--bone);
+  }
+  .mosaic figcaption .name{ font-weight: 600; font-size: 1rem; }
+  .mosaic figcaption .meta{ font-size: 0.85rem; opacity: 0.85; margin-top: 2px; }
+  .mosaic .new-flag{
+    position: absolute;
+    top: 16px; left: 16px;
+    font-style: italic;
+    font-family: 'Fraunces', serif;
+    font-size: 0.95rem;
+    color: var(--aubergine);
+  }
+
+  /* ---------- TESTIMONIALS ---------- */
+  .quotes{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 64px;
+  }
+  .quote-mark{
+    font-family: 'Fraunces', serif;
+    font-size: 3.4rem;
+    color: var(--stone);
+    line-height: 1;
+    margin-bottom: 8px;
+  }
+  .quote p{
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-size: 1.3rem;
+    line-height: 1.4;
+    margin-bottom: 18px;
+  }
+  .quote .who{
+    font-size: 0.85rem;
+    color: var(--ink-soft);
+    border-top: 1px solid var(--line);
+    padding-top: 12px;
+    display: inline-block;
+  }
+
+  /* ---------- OFFER ---------- */
+  .offer{
+    background: var(--aubergine);
+    color: var(--bone);
+  }
+  .offer .wrap{ max-width: 760px; text-align: left; }
+  .offer h2{ color: var(--bone); font-size: clamp(2rem, 3.6vw, 2.9rem); margin-bottom: 18px; }
+  .offer p{ color: #e7d9df; max-width: 50ch; margin-bottom: 30px; font-size: 1.05rem; }
+  .offer .code{
+    font-family: 'Archivo', sans-serif;
+    font-weight: 700;
+    letter-spacing: 0.03em;
+    color: #f2c9de;
+  }
+  .offer .btn{ margin-top: 6px; }
+
+  /* ---------- FINAL CTA ---------- */
+  .final-cta{
+    background: var(--stone);
+    text-align: center;
+    padding: 120px 0;
+  }
+  .final-cta h2{
+    font-style: italic;
+    font-size: clamp(2.1rem, 4.6vw, 3.4rem);
+    max-width: 18ch;
+    margin: 0 auto 30px;
+  }
+  .final-cta .fine-print{ display:block; margin-top: 18px; }
+
+  footer{
+    padding: 32px 0;
+    text-align:center;
+    font-size: 0.8rem;
+    color: var(--ink-soft);
+  }
+
+  @media (max-width: 900px){
+    .hero{ grid-template-columns: 1fr; }
+    .hero-visual{ order: -1; min-height: 380px; }
+    .hero-copy{ padding: 40px 24px; }
+    .benefits{ grid-template-columns: 1fr; gap: 40px; }
+    .mosaic{ grid-template-columns: 1fr; grid-template-rows: none; height: auto; }
+    .mosaic figure{ aspect-ratio: 4/3; }
+    .mosaic .m-big{ grid-row: auto; aspect-ratio: 4/3; }
+    .quotes{ grid-template-columns: 1fr; gap: 40px; }
+    .section{ padding: 64px 0; }
+    .final-cta{ padding: 80px 0; }
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    html{ scroll-behavior: auto; }
+    .btn, .textlink{ transition: none; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <nav>
+      <a class="logo" href="#top">muris</a>
+      <a class="textlink" href="https://murisbrand.com/es/collections/barefoot-mujer" target="_blank" rel="noopener noreferrer">
+        Ver colección Woman
+      </a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+
+  <!-- AWARENESS -->
+  <section class="hero">
+    <div class="hero-copy">
+      <h1>Camina como si nunca hubieras dejado de ser libre.</h1>
+      <p>Zapatillas barefoot de origen vegetal para mujeres que no piensan renunciar a la naturalidad de su paso. Cero drop, suela flexible, cero crueldad animal.</p>
+      <div class="hero-cta-row">
+        <a class="btn" href="https://murisbrand.com/es/collections/barefoot-mujer" target="_blank" rel="noopener noreferrer">
+          Descubre la colección Woman
+        </a>
+        <span class="fine-print">Envío gratis desde 80€</span>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <img src="images/hero-verona-lifestyle.jpg" alt="Mujer caminando con Muris Verona Woman" loading="eager">
+    </div>
+  </section>
+
+  <div class="pull-stat">
+    <div class="wrap">
+      <span class="num">80%</span>
+      <p>de los problemas de pie en adultos están ligados a calzado rígido y estrecho. Cada Muris se diseña para romper ese molde, no para seguirlo.</p>
+    </div>
+  </div>
+
+  <!-- INTEREST -->
+  <section class="section">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>No fuiste hecha para seguir caminos. Fuiste hecha para crearlos.</h2>
+        <p>Así diseñamos cada par: para devolverle a tu pie la libertad que el calzado convencional le quita.</p>
+      </div>
+      <div class="benefits">
+        <div class="benefit">
+          <h3>Libertad para tu pie</h3>
+          <p>Suela flexible y cero drop que deja que tu pie se mueva, sienta y se fortalezca como fue diseñado, no como el calzado rígido lo obliga.</p>
+        </div>
+        <div class="benefit">
+          <h3>100% vegano y plant-based</h3>
+          <p>Materiales de origen vegetal, sin cuero ni crueldad animal. Cuidamos tu paso y el planeta que pisas, en cada capa del zapato.</p>
+        </div>
+        <div class="benefit">
+          <h3>Salud desde la base</h3>
+          <p>Un pie libre es un cuerpo más equilibrado. Menos rigidez, más movimiento natural, de la planta del pie hacia arriba.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- INTEREST / PRODUCT -->
+  <section class="section section-alt">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>Tres pares para tres formas de caminar.</h2>
+      </div>
+      <div class="mosaic">
+        <figure class="m-big">
+          <img src="images/verona-aubergine.jpg" alt="Verona Woman Aubergine" loading="lazy">
+          <span class="new-flag">Nueva</span>
+          <figcaption>
+            <div class="name">Verona Woman Aubergine</div>
+            <div class="meta">Edición limitada</div>
+          </figcaption>
+        </figure>
+        <figure>
+          <img src="images/verona-darkbrown.jpg" alt="Verona Woman Dark Brown" loading="lazy">
+          <figcaption>
+            <div class="name">Verona Woman Dark Brown</div>
+            <div class="meta">El básico versátil</div>
+          </figcaption>
+        </figure>
+        <figure>
+          <img src="images/elda-elephantgray.jpg" alt="Elda Woman Elephant Gray" loading="lazy">
+          <figcaption>
+            <div class="name">Elda Woman Elephant Gray</div>
+            <div class="meta">79,00 €</div>
+          </figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- TRUST -->
+  <section class="section">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>Historias reales de un paso distinto.</h2>
+      </div>
+      <div class="quotes">
+        <div class="quote">
+          <div class="quote-mark">“</div>
+          <p>Llevo tres meses con mis Verona y no recuerdo la última vez que sentí los pies así de libres al final del día.</p>
+          <span class="who">Clienta Muris Woman</span>
+        </div>
+        <div class="quote">
+          <div class="quote-mark">“</div>
+          <p>Pasé del escepticismo a no querer volver a un zapato rígido. Se nota en cómo camino y en cómo descanso el pie.</p>
+          <span class="who">Clienta Muris Woman</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- DESIRE / OFFER -->
+  <section class="section offer">
+    <div class="wrap">
+      <h2>Tu primer paso, con un 10% menos.</h2>
+      <p>Estrena tu primer par de la colección Woman con el código <span class="code">MURISWOMAN10</span>. Solo para nuevas clientas Muris.</p>
+      <a class="btn btn-inverse" href="https://murisbrand.com/es/collections/barefoot-mujer" target="_blank" rel="noopener noreferrer">
+        Canjear en la colección Woman
+      </a>
+    </div>
+  </section>
+
+  <!-- ACTION -->
+  <section class="final-cta wrap">
+    <h2>La libertad no es un extra. Es la esencia.</h2>
+    <a class="btn" href="https://murisbrand.com/es/collections/barefoot-mujer" target="_blank" rel="noopener noreferrer">
+      Comprar colección Woman
+    </a>
+    <span class="fine-print">Serás redirigida a murisbrand.com</span>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <p>Muris Brand — Calzado barefoot, vegano y plant-based. Esta página es un embudo de captación no oficial creado para dirigir tráfico a murisbrand.com.</p>
+  </div>
+</footer>
+
+</body>
+</html>
