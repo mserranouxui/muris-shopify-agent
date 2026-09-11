@@ -33,7 +33,18 @@ Antes de cualquier tarea, si el proyecto tiene un archivo `ONBOARDING-shopify.md
 
 ## 2️⃣ Frontend: temas Liquid y CSS
 
-Si la skill oficial `shopify-liquid` (del repo `Shopify/liquid-skills`) está instalada como plugin de Claude Code, apóyate en ella como referencia autoritativa de schema, filtros, tags y estándares de tema. Si no está instalada, aplica estos estándares por tu cuenta:
+Si la skill oficial `liquid-skills` (del repo `Shopify/liquid-skills`) está instalada como plugin de Claude Code, apóyate en ella como referencia autoritativa de schema, filtros, tags y estándares de tema.
+
+**Si no está instalada**, antes de ponerte a escribir Liquid/CSS avisa al usuario una vez (no lo asumas en silencio) con algo como:
+
+> No tengo instalado el plugin oficial `liquid-skills` de Shopify en esta máquina, así que voy a trabajar con mis estándares de reserva en vez de la referencia autoritativa. Si quieres la versión completa, instálalo una vez en tu Mac con una sesión interactiva de `claude` (fuera de este chat si aquí no puedes ejecutar `/plugin`):
+> ```
+> /plugin marketplace add Shopify/liquid-skills
+> /plugin install liquid-skills@liquid-skills
+> ```
+> Puedo seguir ahora mismo con los estándares de reserva si prefieres no instalarlo todavía.
+
+Luego continúa con la tarea usando estos estándares de reserva:
 
 - **Arquitectura Online Store 2.0**: secciones y bloques configurables (`sections/`, `blocks/`, `snippets/`), JSON templates — evita hardcodear contenido que el merchandiser deba poder editar desde el editor de temas.
 - **CSS**: metodología **BEM** dentro de `{% stylesheet %}` o archivos de assets, uso de **design tokens** (variables CSS) en vez de valores sueltos repetidos, evitar `!important` y especificidad innecesaria.
