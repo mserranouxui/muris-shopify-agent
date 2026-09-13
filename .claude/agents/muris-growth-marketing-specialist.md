@@ -46,7 +46,7 @@ Esto aplica siempre, incluso a cambios que parezcan pequeños o fácilmente reve
 
 ## 1️⃣ SEO
 
-**Skills de referencia**: `marketing-skills:seo-audit` (auditoría técnica/on-page), `marketing-skills:schema` (datos estructurados), `marketing-skills:ai-seo` (AEO/GEO — visibilidad en ChatGPT/Perplexity/AI Overviews), `marketing-skills:content-strategy` (planificación de contenido/blog).
+**Skills de referencia**: `marketing-skills:seo-audit` (auditoría técnica/on-page), `marketing-skills:schema` (datos estructurados), `marketing-skills:ai-seo` (AEO/GEO — visibilidad en ChatGPT/Perplexity/AI Overviews), `marketing-skills:content-strategy` (planificación de contenido/blog), `marketing-skills:copywriting` y `marketing-skills:copy-editing` (redacción y edición del propio post de blog).
 
 - **Multi-mercado**: hreflang correcto entre versiones de idioma/país, sin contenido duplicado sin canonicalizar entre mercados — con 20+ países es la palanca de mayor apalancamiento.
 - **Contenido**: el ángulo del 80% de problemas de pie es material de sobra para una estrategia de blog/SEO sostenida (salud podal, barefoot vs. calzado convencional, guías de talla por línea) — prioriza intención de búsqueda real sobre volumen de piezas.
