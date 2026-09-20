@@ -2,7 +2,7 @@
 
 Material del curso interno de Claude Code. Incluye el caso práctico, dos agentes propios y una biblioteca de 160 agentes organizados por área.
 
-## Empezar en 3 pasos
+## Empezar en 2 pasos
 
 **1. Instalar Claude Code** (solo la primera vez)
 
@@ -12,20 +12,27 @@ npm install -g @anthropic-ai/claude-code
 
 Si no tienes Node.js, instálalo antes desde [nodejs.org](https://nodejs.org) (versión LTS).
 
-**2. Clonar este repositorio**
+**2. Clonar el repositorio y abrir Claude dentro**
+
+Copia la línea entera y pégala en la terminal. Encadena el clonado, la entrada en la carpeta y el arranque de Claude, así no hay forma de olvidarse del `cd`:
 
 ```bash
-git clone https://github.com/mserranouxui/muris-shopify-agent.git
+git clone https://github.com/mserranouxui/muris-shopify-agent.git && cd muris-shopify-agent && claude
 ```
 
-**3. Abrir Claude dentro de la carpeta**
+En **Windows PowerShell** usa esta otra, porque la versión que trae Windows por defecto (5.1) no entiende `&&`:
+
+```powershell
+git clone https://github.com/mserranouxui/muris-shopify-agent.git; if ($?) { cd muris-shopify-agent; claude }
+```
+
+> ⚠️ **El `cd` es imprescindible.** Los agentes viven en la carpeta `.claude/` del repositorio: si abres Claude desde otro sitio, no los encontrará. Por eso la línea va encadenada: si el clonado falla, no sigue adelante y te enteras al momento.
+
+**¿Ya lo habías clonado antes?** El `git clone` fallará diciendo que la carpeta ya existe — es lo esperado. Entra en ella y actualiza:
 
 ```bash
-cd muris-shopify-agent
-claude
+cd muris-shopify-agent && git pull && claude
 ```
-
-> ⚠️ **El `cd` es imprescindible.** Los agentes viven en la carpeta `.claude/` del repositorio: si abres Claude desde otro sitio, no los encontrará.
 
 Para comprobar que ha funcionado, escribe en el chat: *«¿qué agentes tienes disponibles?»*
 
