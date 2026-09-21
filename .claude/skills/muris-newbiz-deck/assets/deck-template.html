@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Nombre Proyecto</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#171717; --paper:#fff; --mint:#8FFFC4; --plum:#614051;
+  --grey:#8E8E8E; --hairline:rgba(23,23,23,.1);
+  --font-display:"Instrument Serif",Georgia,serif;
+  --font-text:"Inter",system-ui,sans-serif;
+  --ease:cubic-bezier(.3,1,.3,1);
+  --pad:clamp(40px,5vw,96px);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{background:#e8e8e6;color:var(--ink);font-family:var(--font-text);-webkit-font-smoothing:antialiased}
+
+/* --- Slide: 16:9, 1280x720 de referencia --- */
+.deck{display:flex;flex-direction:column;align-items:center;gap:24px;padding:24px}
+.slide{
+  position:relative;width:min(1280px,100%);aspect-ratio:16/9;
+  background:var(--paper);overflow:hidden;
+  display:flex;flex-direction:column;justify-content:center;
+  padding:var(--pad);container-type:inline-size;
+}
+.slide[data-n]::after{
+  content:attr(data-n);position:absolute;right:var(--pad);bottom:28px;
+  font-size:11px;letter-spacing:.08em;color:var(--grey)
+}
+.slide.is-ink{background:var(--ink);color:var(--paper)}
+.slide.is-ink .lead,.slide.is-ink .caption{color:rgba(255,255,255,.7)}
+.slide.is-mint{background:var(--mint)}
+.slide.is-bleed{padding:0;justify-content:flex-end}
+
+/* --- Tipografía --- */
+.display{font-family:var(--font-display);font-weight:400;line-height:1;letter-spacing:0}
+.d-xl{font-size:clamp(48px,7.8cqw,110px)}
+.d-lg{font-size:clamp(40px,5.4cqw,76px)}
+.d-md{font-size:clamp(30px,3.6cqw,52px)}
+.kicker{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--grey);margin-bottom:28px}
+.manifesto{text-transform:uppercase;font-size:clamp(14px,1.55cqw,22px);line-height:1.25;white-space:pre-line}
+.manifesto + .manifesto{margin-top:1.6em}
+.lead{font-size:clamp(14px,1.45cqw,20px);line-height:1.45;color:#3a3a3a;max-width:52ch}
+.display + .lead{margin-top:28px}
+.caption{font-size:12px;letter-spacing:.04em;color:var(--grey);margin-top:12px}
+.right{text-align:right;margin-left:auto}
+.u-plum{color:var(--plum)}
+
+/* --- Imagen --- */
+.bleed{position:absolute;inset:0}
+.bleed img{width:100%;height:100%;object-fit:cover;display:block}
+.bleed::after{content:"";position:absolute;inset:0;background:rgba(23,23,23,.25)}
+.bleed.is-clean::after{display:none}
+.slide.is-bleed .content{position:relative;color:var(--paper);padding:var(--pad)}
+.mosaic{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(16px,2cqw,40px);align-items:center}
+.mosaic img{width:100%;display:block;object-fit:cover}
+.mosaic img:nth-child(1){aspect-ratio:3/4}
+.mosaic img:nth-child(2){aspect-ratio:1/1}
+.mosaic img:nth-child(3){aspect-ratio:4/5}
+
+/* --- Bloques --- */
+.split{display:grid;grid-template-columns:1fr 1fr;gap:clamp(32px,4cqw,80px);align-items:center}
+.split img{width:100%;aspect-ratio:4/5;object-fit:cover}
+table{width:100%;border-collapse:collapse;font-size:clamp(12px,1.25cqw,17px)}
+th,td{text-align:left;padding:14px 0;border-bottom:1px solid var(--hairline);vertical-align:top}
+th{font-weight:500;text-transform:uppercase;letter-spacing:.08em;font-size:11px;color:var(--grey)}
+.btn{display:inline-block;background:var(--ink);color:#fff;border-radius:6px;padding:18px 26px;font-weight:500;font-size:15px;text-decoration:none;margin-top:36px}
+.slide.is-mint .btn,.slide.is-ink .btn{background:var(--ink)}
+.slide.is-ink .btn{background:var(--mint);color:var(--ink)}
+
+/* --- Impresión a PDF --- */
+@media print{
+  @page{size:1280px 720px;margin:0}
+  html,body{background:#fff}
+  .deck{gap:0;padding:0}
+  .slide{width:1280px;height:720px;aspect-ratio:auto;break-after:page}
+}
+</style>
+</head>
+<body>
+<div class="deck">
+
+  <!-- 1 · Portada -->
+  <section class="slide is-bleed">
+    <div class="bleed"><img src="IMG_PORTADA" alt=""></div>
+    <div class="content">
+      <p class="kicker" style="color:rgba(255,255,255,.75)">Propuesta · Cliente · 2026</p>
+      <h1 class="display d-xl">Nombre del proyecto</h1>
+    </div>
+  </section>
+
+  <!-- 2 · Manifiesto -->
+  <section class="slide" data-n="02">
+    <div class="right">
+      <p class="manifesto">Hay algo aquí,
+pero esto no va de lo de siempre.
+Va de lo que empieza contigo.</p>
+      <p class="manifesto">Porque lo que importa no duele.</p>
+    </div>
+  </section>
+
+  <!-- 3 · Contexto -->
+  <section class="slide" data-n="03">
+    <p class="kicker">El contexto</p>
+    <h2 class="display d-md">La tensión, en una frase.</h2>
+    <p class="lead">Dos líneas de dato o de observación. Sin adjetivos de agencia.</p>
+  </section>
+
+  <!-- 4 · Insight -->
+  <section class="slide is-mint" data-n="04">
+    <h2 class="display d-lg">El insight cabe en una sola línea.</h2>
+  </section>
+
+  <!-- 5 · La idea -->
+  <section class="slide" data-n="05">
+    <p class="kicker">La idea</p>
+    <h2 class="display d-lg">Titular de la idea</h2>
+    <p class="lead">Bajada corta que aterriza qué es, no por qué es buena.</p>
+  </section>
+
+  <!-- 6 · Territorio visual -->
+  <section class="slide" data-n="06">
+    <div class="mosaic">
+      <img src="IMG_1" alt=""><img src="IMG_2" alt=""><img src="IMG_3" alt="">
+    </div>
+  </section>
+
+  <!-- 7 · Activación -->
+  <section class="slide" data-n="07">
+    <div class="split">
+      <img src="IMG_ACTIVACION" alt="">
+      <div>
+        <p class="kicker">Activación 01</p>
+        <h3 class="display d-md">Nombre de la acción</h3>
+        <p class="lead">Dos líneas. Qué pasa y dónde pasa.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 8 · Plan -->
+  <section class="slide" data-n="08">
+    <p class="kicker">Plan</p>
+    <table>
+      <tr><th>Fase</th><th>Qué</th><th>Cuándo</th></tr>
+      <tr><td>01</td><td>Definición</td><td>Semanas 1–2</td></tr>
+      <tr><td>02</td><td>Producción</td><td>Semanas 3–6</td></tr>
+      <tr><td>03</td><td>Salida</td><td>Semana 7</td></tr>
+    </table>
+  </section>
+
+  <!-- 9 · Cierre -->
+  <section class="slide is-ink">
+    <h2 class="display d-lg">Frase de cierre de marca.</h2>
+    <a class="btn" href="#">Hablamos</a>
+  </section>
+
+</div>
+<script>
+// Navegación con teclado: flechas para saltar de slide a slide.
+const slides=[...document.querySelectorAll('.slide')];let i=0;
+addEventListener('keydown',e=>{
+  if(!['ArrowRight','ArrowDown','ArrowLeft','ArrowUp',' '].includes(e.key))return;
+  e.preventDefault();
+  i=Math.max(0,Math.min(slides.length-1,i+(e.key==='ArrowLeft'||e.key==='ArrowUp'?-1:1)));
+  slides[i].scrollIntoView({behavior:'smooth',block:'center'});
+});
+</script>
+</body>
+</html>
